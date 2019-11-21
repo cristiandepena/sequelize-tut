@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
-const Gig = require('../models/Gig');
+const Gig = db.import('../models/Gig');
 
+// Get All
 router.get('/', (req, res) => {
+
     Gig.findAll()
     .then(gigs => {
         console.log(gigs);
-        res.sendStatus(200);
+        res.status(200).send(JSON.stringify({ gigs }));
     }).catch( err => console.log(err));
 });
 

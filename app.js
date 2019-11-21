@@ -8,6 +8,8 @@ db.authenticate().then(()=>
     console.log('Database connected...'))
     .catch(err => console.log('Error:' + err));
 
+db.sync();
+
 const app = express();
 
 app.get('/', (req, res) =>{

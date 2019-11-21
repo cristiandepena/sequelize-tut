@@ -1,22 +1,14 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
-
-const Gig = db.define('gig', {
-    title: {
-        type: Sequelize.STRING
-    },
-    technologies: {
-        type: Sequelize.STRING
-    },
-    description: {
-        type: Sequelize.STRING
-    },
-    budget: {
-        type: Sequelize.FLOAT
-    },
-    contact_email: {
-        type: Sequelize.STRING
-    }
-});
-
-module.exports = Gig;
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Gig = sequelize.define('Gig', {
+    title: DataTypes.STRING,
+    technologies: DataTypes.STRING,
+    description: DataTypes.STRING,
+    budget: DataTypes.FLOAT,
+    contact_email: DataTypes.STRING
+  }, {});
+  Gig.associate = function(models) {
+    // associations can be defined here
+  };
+  return Gig;
+};
